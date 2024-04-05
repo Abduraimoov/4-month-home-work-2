@@ -317,8 +317,8 @@ class ViewController: UIViewController {
     
         @objc func  goNextView( sender: UIButton) {
             
-            let vc = SingViewController()
-            present(vc, animated: true)
+            let vc = SecondViewController()
+            navigationController?.pushViewController(vc, animated: true)
         }
     
     @objc func fourview( sender: UIButton) {
@@ -347,7 +347,7 @@ class ViewController: UIViewController {
             return
         }
     
-        let vc = SecondViewController()
+        let vc = ThirdViewController()
         navigationController?.pushViewController(vc, animated: true)
     }
     

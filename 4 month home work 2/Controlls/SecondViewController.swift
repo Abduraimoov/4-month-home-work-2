@@ -26,44 +26,44 @@ class SecondViewController: UIViewController {
     
     
     private lazy var myNameLbl: UILabel = MakerView.sharedLB.makeLbl(text: "Full Name",
-                                                              textColor: .black,
-                                                              textSize: 12, ofSize: .light)
+                                                                     textColor: .black,
+                                                                     textSize: 12, ofSize: .light)
     
     private lazy var myNameTF: UITextField = MakerView.sharedTF.makeTF(placeholder: "Your full name")
     
     private lazy var myNumberLbl: UILabel = MakerView.sharedLB.makeLbl(text: "Mobile Number",
-                                                                textColor: .black,
-                                                                textSize: 12, ofSize: .light)
+                                                                       textColor: .black,
+                                                                       textSize: 12, ofSize: .light)
     
     private lazy var myNumberTF: UITextField = MakerView.sharedTF.makeTF(placeholder: "+996 your number")
     
     private lazy var myEmailLbl: UILabel = MakerView.sharedLB.makeLbl(text: "Email",
-                                                               textColor: .black,
-                                                               textSize: 12, ofSize: .light)
+                                                                      textColor: .black,
+                                                                      textSize: 12, ofSize: .light)
     
     private lazy var myEmailTF: UITextField = MakerView.sharedTF.makeTF(placeholder: "Your.email@gmail.com")
     
     private lazy var myUserLbl: UILabel = MakerView.sharedLB.makeLbl(text: "User Name",
-                                                              textColor: .black,
-                                                              textSize: 12, ofSize: .light)
+                                                                     textColor: .black,
+                                                                     textSize: 12, ofSize: .light)
     
     private lazy var myUserTF: UITextField = MakerView.sharedTF.makeTF(placeholder: "Your user name")
     
     private lazy var myPasswordLbl: UILabel = MakerView.sharedLB.makeLbl(text: "Password",
-                                                                  textColor: .black,
-                                                                  textSize: 12, ofSize: .light)
+                                                                         textColor: .black,
+                                                                         textSize: 12, ofSize: .light)
     
     private lazy var myPasswordTF: UITextField = MakerView.sharedTF.makeTF(placeholder: "123465678")
     
     private lazy var myConfirmLbl: UILabel = MakerView.sharedLB.makeLbl(text: "Confirm Password",
-                                                                 textColor: .black,
-                                                                 textSize: 12, ofSize: .light)
+                                                                        textColor: .black,
+                                                                        textSize: 12, ofSize: .light)
     
     private lazy var myConfirmTF: UITextField = MakerView.sharedTF.makeTF(placeholder: "1234656789")
     
     private lazy var myDontLabel: UILabel = MakerView.sharedLB.makeLbl(text: "Already have an Account?",
-                                                                textColor: .black,
-                                                                textSize: 14, ofSize: .bold)
+                                                                       textColor: .black,
+                                                                       textSize: 14, ofSize: .bold)
     
     private lazy var SingUpBT: UIButton = MakerView.shared.makeBTN(title: "Sing Up",
                                                                    for: .normal,
@@ -300,9 +300,9 @@ class SecondViewController: UIViewController {
     
     @objc func  oneView( sender: UIButton) {
         navigationController?.pushViewController(ViewController(), animated: true)
-   
+        
     }
-
+    
     @objc func thirdView(sender: UIButton) {
         guard let nameText = myNameTF.text, !nameText.isEmpty else {
             if let text = myNameTF.text, text.count < 6 {
@@ -312,41 +312,42 @@ class SecondViewController: UIViewController {
             }
             return
         }
-
-        guard let numberText = myNumberTF.text, numberText.count >= 6 else {
+        
+        if let numberText = myNumberTF.text, numberText.count < 6 {
             myNumberTF.placeholder = "Enter a number +996"
             myNumberTF.layer.borderColor = UIColor.red.cgColor
             myNumberTF.layer.borderWidth = 2
             return
         }
-
-        guard let emailText = myEmailTF.text, emailText.count >= 6 else {
+        
+        if let emailText = myEmailTF.text, emailText.count < 6 {
             myEmailTF.placeholder = "Enter an email"
             myEmailTF.layer.borderColor = UIColor.red.cgColor
             myEmailTF.layer.borderWidth = 2
             return
         }
         
-        guard let userText = myUserTF.text, userText.count >= 6 else {
+        if let userText = myUserTF.text, userText.count < 6 {
             myUserTF.placeholder = "Enter a user name"
             myUserTF.layer.borderColor = UIColor.red.cgColor
             myUserTF.layer.borderWidth = 2
             return
         }
         
-        guard let passwordText = myPasswordTF.text, passwordText.count >= 6 else {
+        if let passwordText = myPasswordTF.text, passwordText.count < 6 {
             myPasswordTF.placeholder = "Enter a password (at least 6 characters)"
             myPasswordTF.layer.borderColor = UIColor.red.cgColor
             myPasswordTF.layer.borderWidth = 2
             return
         }
         
-        guard let confirmPasswordText = myConfirmTF.text, confirmPasswordText == passwordText else {
+        if let confirmPasswordText = myConfirmTF.text, confirmPasswordText != myPasswordTF.text {
             myConfirmTF.placeholder = "Passwords do not match"
             myConfirmTF.layer.borderColor = UIColor.red.cgColor
             myConfirmTF.layer.borderWidth = 2
             return
         }
+        
 
         let vc = ThirdViewController()
         navigationController?.pushViewController(vc, animated: true)
